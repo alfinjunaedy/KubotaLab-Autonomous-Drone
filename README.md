@@ -35,6 +35,45 @@ Compact autonomous quadcopter built around a Raspberry Pi Zero 2 W. It estimates
 └── plot_log_bin.py      # plot flight logs with Python
 ```
 
+## Environment setup
+
+The controller runs **Raspbian GNU/Linux 12 (Bookworm), armv7l 32-bit**. Prepare the system once before building the code.
+
+**1. System packages** — SSH (remote access), Avahi (mDNS discovery), Samba (file shares for pulling `log/*.bin`), and monitoring tools:
+
+```bash
+sudo apt install openssh-server avahi-daemon
+sudo apt install samba
+sudo apt install git
+```
+
+**2. [WiringPi](https://github.com/WiringPi/WiringPi)** — GPIO library, built and installed from source:
+
+```bash
+git clone https://github.com/WiringPi/WiringPi.git
+cd WiringPi
+./build debian
+cd debian-template
+sudo chmod +x wiringpi_3.2_armhf.deb
+sudo apt install ./wiringpi_3.2_armhf.deb
+sudo systemctl enable pigpiod
+```
+
+**3. Boot config** — edit `/boot/firmware/config.txt` and add the following below `[all]`:
+
+```
+dtoverlay=vc4-kms-v3d
+enable_uart=1
+dtoverlay=disable-bt
+dtoverlay=dwc2,dr_mode=host
+dtoverlay=i2c-gpio,bus=3,i2c_gpio_sda=4,i2c_gpio_scl=17,i2c_gpio_delay_us=2
+over_voltage=2
+arm_freq=1200
+core_freq=500
+```
+
+This overclocks the Pi to 1.2 GHz, enables the UART (Bluetooth disabled to free it), puts USB into host mode, and bit-bangs I²C bus 3 on GPIO 4 (SDA) / GPIO 17 (SCL).
+
 ## Build
 
 From the repository root:
