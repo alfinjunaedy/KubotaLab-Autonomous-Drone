@@ -20,6 +20,8 @@ Compact autonomous quadcopter built around a Raspberry Pi Zero 2 W. It estimates
   <img src="imgs/top.png" width="48%" alt="Top CAD view" />
 </p>
 
+![Autonomous flight demo](imgs/demo.gif)
+
 ## Repository layout
 
 ```
@@ -145,7 +147,7 @@ flowchart LR
 All flight data are stored in binary log files (`log/*.bin`). Plot them with:
 
 ```bash
-python plot_log_bin.py
+python plot_log_bin.py [logfilename].bin
 ```
 
 ## License
