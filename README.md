@@ -42,9 +42,9 @@ The controller runs **Raspbian GNU/Linux 12 (Bookworm), armv7l 32-bit**. Prepare
 **1. System packages** — SSH (remote access), Avahi (mDNS discovery), Samba (file shares for pulling `log/*.bin`), and monitoring tools:
 
 ```bash
-sudo apt install openssh-server avahi-daemon
+sudo apt install openssh-server
 sudo apt install samba
-sudo apt install git
+sudo apt install avahi-daemon
 ```
 
 **2. [WiringPi](https://github.com/WiringPi/WiringPi)** — GPIO library, built and installed from source:
