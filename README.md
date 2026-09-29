@@ -20,7 +20,6 @@ Compact autonomous quadcopter built around a Raspberry Pi Zero 2 W. It estimates
 
 <p align="center">
   <img src="imgs/iso.png" width="48%" alt="Isometric CAD view" />
-  <br>
   <img src="imgs/top.png" width="48%" alt="Top CAD view" />
 </p>
 
