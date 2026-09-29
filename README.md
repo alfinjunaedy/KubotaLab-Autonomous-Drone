@@ -15,6 +15,7 @@ Compact autonomous quadcopter built around a Raspberry Pi Zero 2 W. It estimates
 | Battery | Li-ion 6S pack (~5 min flight time) |
 | Onboard controller | Raspberry Pi Zero 2 W |
 | Sensors | IMU · optical flow · altitude ToF · A/D converter |
+| Payload | An iPhone 16 Pro |
 | Flight controller | 4-in-1 ESC (Betaflight) |
 
 <p align="center">
