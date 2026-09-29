@@ -1,7 +1,7 @@
 # Autonomous Drone
 
 <p align="center">
-![Autonomous flight demo](imgs/demo.gif)
+  <img src="imgs/demo.gif" alt="Autonomous flight demo" />
 </p>
 
 Compact autonomous quadcopter built around a Raspberry Pi Zero 2 W. It estimates its position from an IMU, optical flow, and an altitude ToF sensor, then closes the loop on position and velocity onboard — no external positioning system required.
