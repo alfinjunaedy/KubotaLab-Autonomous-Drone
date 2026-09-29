@@ -19,8 +19,8 @@ Compact autonomous quadcopter built around a Raspberry Pi Zero 2 W. It estimates
 | Flight controller | 4-in-1 ESC (Betaflight) |
 
 <p align="center">
-  <img src="imgs/iso.png" width="55%" alt="Isometric CAD view" />
-  <img src="imgs/top.png" width="55%" alt="Top CAD view" />
+  <img src="imgs/iso.png" width="50%" alt="Isometric CAD view" />
+  <img src="imgs/top.png" width="50%" alt="Top CAD view" />
 </p>
 
 ## Repository layout
