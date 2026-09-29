@@ -118,6 +118,7 @@ flowchart LR
         VC[Velocity control]
         OC[Orientation control]
         GE[Ground effect compensation]
+        SUM(("+"))
         FC[FC · motor mixing<br/>Betaflight 4-in-1 ESC]
     end
 
@@ -131,15 +132,19 @@ flowchart LR
     USER -->|target xyz| PC
     USER -->|target yaw| OC
     PC -->|target vel| VC
-    VC -->|roll-pitch-thrust| GE
-    GE -->|thrust compensated| FC
-    OC -->|target yaw| FC
+
+    VC -->|roll-pitch-thrust| SUM
+    OC -->|yaw| SUM
+    TOF -->|8x8 range| GE
+    IMU --> GE
+    GE -->|Δ roll-pitch-yaw-thrust| SUM
+    SUM -->|roll-pitch-yaw-thrust| FC
+
     FC --> MOTORS
 
     PE -->|xyz| PC
     PE -->|v_xyz| VC
     PE -->|rpy · rates| OC
-    TOF -->|8x8 range| GE
 ```
 
 | Module | In | Out | Feedback |
@@ -148,7 +153,7 @@ flowchart LR
 | Velocity control | target velocity | roll-pitch-thrust | current velocity |
 | Orientation control | target yaw | target yaw | yaw, yaw rate |
 | Position estimation | ToF 8×8, IMU, optical flow | xyz, v_xyz, rpy, rates | — |
-| Ground effect | ToF 8×8 | thrust compensation | — |
+| Ground effect | ToF 8×8, IMU | Δ roll-pitch-yaw-thrust (compensation) | — |
 | FC | roll-pitch-yaw-thrust | motor mixing | — |
 
 ## Flight stages
